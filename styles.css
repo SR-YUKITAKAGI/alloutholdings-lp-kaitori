@@ -54,15 +54,15 @@ body {
 /* Insight Section */
 .insight {
     background: linear-gradient(180deg, #FFF8DC 0%, #FFFACD 100%);
-    padding: 60px 0;
+    padding: 40px 0;
 }
 
 .insight-title {
     text-align: center;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 900;
     color: #FF0000;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     position: relative;
     text-shadow: 
         3px 3px 0px #FFD700,
@@ -103,119 +103,119 @@ body {
     50% { transform: translateY(-60%); }
 }
 
-.insight-layout {
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    max-width: 1200px;
+.insight-compact {
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 40px 0;
+    padding: 10px 0;
 }
 
-.person-image {
-    flex: 0 0 400px;
+.worry-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.worry-compact-item {
     display: flex;
     align-items: center;
-    justify-content: center;
-    min-height: 100%;
-}
-
-.person-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.worries-list {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-.worry-item {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 20px 30px;
-    background: #FFF;
-    border: 3px solid #FF0000;
+    gap: 10px;
+    padding: 15px;
+    background: linear-gradient(135deg, #FFF, #FFF8DC);
+    border: 3px solid #FFD700;
     border-radius: 15px;
-    box-shadow: 5px 5px 20px rgba(255, 0, 0, 0.2);
+    box-shadow: 5px 5px 15px rgba(255, 0, 0, 0.2);
     transition: all 0.3s;
-    animation: slide-in 0.5s ease-out forwards;
+    animation: pop-in 0.5s ease-out forwards;
     opacity: 0;
 }
 
-.worry-item:nth-child(1) { animation-delay: 0.1s; }
-.worry-item:nth-child(2) { animation-delay: 0.2s; }
-.worry-item:nth-child(3) { animation-delay: 0.3s; }
-.worry-item:nth-child(4) { animation-delay: 0.4s; }
-.worry-item:nth-child(5) { animation-delay: 0.5s; }
-.worry-item:nth-child(6) { animation-delay: 0.6s; }
+.worry-compact-item:nth-child(1) { animation-delay: 0.1s; }
+.worry-compact-item:nth-child(2) { animation-delay: 0.2s; }
+.worry-compact-item:nth-child(3) { animation-delay: 0.3s; }
+.worry-compact-item:nth-child(4) { animation-delay: 0.4s; }
 
-@keyframes slide-in {
+@keyframes pop-in {
     from {
-        transform: translateX(50px);
+        transform: scale(0.8);
         opacity: 0;
     }
     to {
-        transform: translateX(0);
+        transform: scale(1);
         opacity: 1;
     }
 }
 
-.worry-item:hover {
-    transform: translateX(10px);
-    background: linear-gradient(135deg, #FFF8DC, #FFFACD);
-    box-shadow: 8px 8px 25px rgba(255, 0, 0, 0.3);
+.worry-compact-item:hover {
+    transform: translateY(-5px) scale(1.05);
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    border-color: #FF0000;
+    box-shadow: 8px 8px 25px rgba(255, 0, 0, 0.4);
 }
 
-.worry-check {
+.worry-compact-item:hover .worry-text {
+    color: #FFF;
+}
+
+.worry-icon {
     font-size: 2rem;
-    color: #FF0000;
-    font-weight: bold;
+    display: inline-block;
+    animation: bounce 2s infinite;
+}
+
+.worry-compact-item:nth-child(odd) .worry-icon {
+    animation-delay: 0.5s;
 }
 
 .worry-text {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: #333;
     font-weight: bold;
+    flex: 1;
+    transition: color 0.3s;
+}
+
+.worry-hidden-message {
+    text-align: center;
+    padding: 15px;
+    background: linear-gradient(135deg, #FF0000, #FFD700);
+    border-radius: 10px;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+    animation: pulse 2s infinite;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .insight-layout {
-        flex-direction: column;
-        gap: 30px;
-        padding: 20px 0;
+    .worry-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
     }
     
-    .person-image {
-        flex: none;
-        width: 90%;
-        max-width: 300px;
-        margin: 0 auto;
+    .worry-compact-item {
+        padding: 12px;
     }
     
-    .worries-list {
-        width: 100%;
-        padding: 0 10px;
-    }
-    
-    .worry-item {
-        padding: 15px 20px;
+    .worry-icon {
+        font-size: 1.5rem;
     }
     
     .worry-text {
-        font-size: 1.1rem;
+        font-size: 0.95rem;
+    }
+    
+    .worry-hidden-message {
+        font-size: 0.9rem;
+        padding: 12px;
     }
 }
 
 /* Color Stone Problem Section */
 .color-stone-problem {
     background: linear-gradient(180deg, #2C2C2C 0%, #1A1A1A 100%);
-    padding: 80px 0;
+    padding: 50px 0;
     position: relative;
     overflow: hidden;
 }
@@ -233,24 +233,79 @@ body {
 
 .problem-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 .problem-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: #FFF;
     line-height: 1.8;
-    font-weight: bold;
+    font-weight: 900;
+    position: relative;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+    border: 3px solid #FFD700;
+    border-radius: 20px;
+    box-shadow: 
+        0 0 30px rgba(255, 215, 0, 0.5),
+        inset 0 0 30px rgba(255, 0, 0, 0.2);
+    animation: glow-box 3s ease-in-out infinite;
 }
 
-.emphasis {
-    display: block;
-    font-size: 2.5rem;
-    color: #FFD700;
-    margin-top: 20px;
+@keyframes glow-box {
+    0%, 100% { 
+        box-shadow: 
+            0 0 30px rgba(255, 215, 0, 0.5),
+            inset 0 0 30px rgba(255, 0, 0, 0.2);
+    }
+    50% { 
+        box-shadow: 
+            0 0 50px rgba(255, 215, 0, 0.8),
+            inset 0 0 50px rgba(255, 0, 0, 0.4);
+    }
+}
+
+@keyframes shimmer-text {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+.problem-title::before,
+.problem-title::after {
+    content: '⚠️';
+    position: absolute;
+    font-size: 3rem;
+    animation: flash 1s infinite;
+}
+
+.problem-title::before {
+    top: -20px;
+    left: 20px;
+}
+
+.problem-title::after {
+    bottom: -20px;
+    right: 20px;
+    animation-delay: 0.5s;
+}
+
+.problem-question {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+.problem-question .emphasis {
+    display: inline-block;
+    font-size: 3.5rem;
+    background: linear-gradient(90deg, #FFD700, #FF0000, #FFD700);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-weight: 900;
-    text-shadow: 3px 3px 6px rgba(255, 0, 0, 0.5);
-    animation: shake 2s ease-in-out infinite;
+    animation: shimmer-text 3s linear infinite, shake 2s ease-in-out infinite;
+    text-shadow: none;
 }
 
 .problem-content {
@@ -262,8 +317,8 @@ body {
     background: rgba(255, 255, 255, 0.1);
     border: 3px solid #FF0000;
     border-radius: 20px;
-    padding: 40px;
-    margin-bottom: 40px;
+    padding: 30px;
+    margin-bottom: 30px;
     text-align: center;
 }
 
@@ -311,7 +366,7 @@ body {
 .solution-box {
     background: linear-gradient(135deg, #FFD700, #FFA500);
     border-radius: 30px;
-    padding: 50px;
+    padding: 35px;
     position: relative;
     box-shadow: 0 20px 60px rgba(255, 215, 0, 0.4);
 }
@@ -396,10 +451,32 @@ body {
 @media (max-width: 768px) {
     .problem-title {
         font-size: 1.5rem;
+        line-height: 1.5;
+        padding: 15px;
+        border-width: 2px;
     }
     
-    .emphasis {
-        font-size: 1.8rem;
+    .problem-title::before,
+    .problem-title::after {
+        font-size: 2rem;
+    }
+    
+    .problem-title::before {
+        top: -15px;
+        left: 10px;
+    }
+    
+    .problem-title::after {
+        bottom: -15px;
+        right: 10px;
+    }
+    
+    .problem-question .emphasis {
+        font-size: 2.5rem;
+    }
+    
+    .problem-question {
+        margin-top: 20px;
     }
     
     .reason-text {
@@ -411,7 +488,7 @@ body {
     }
     
     .solution-box {
-        padding: 30px 20px;
+        padding: 25px 15px;
     }
     
     .big-result {
@@ -422,15 +499,16 @@ body {
 /* CTA Section */
 .cta {
     background: radial-gradient(ellipse at center, #FFD700, #FFA500);
-    padding: 60px 0;
+    padding: 40px 0;
     text-align: center;
 }
 
 .cta h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #FFF;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.5);
+    line-height: 1.3;
 }
 
 .cta-buttons {
@@ -500,7 +578,7 @@ body {
 /* Service Features Section */
 .service-features {
     background: linear-gradient(180deg, #FFF8DC 0%, #FFE4B5 100%);
-    padding: 100px 0;
+    padding: 60px 0;
     position: relative;
 }
 
@@ -509,7 +587,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 30px;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
 }
 
 .star-decoration {
@@ -524,7 +602,7 @@ body {
 }
 
 .features-title {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 900;
     background: linear-gradient(135deg, #FF0000, #FFD700);
     -webkit-background-clip: text;
@@ -532,14 +610,15 @@ body {
     background-clip: text;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
+    white-space: nowrap;
 }
 
 /* Feature Blocks */
 .feature-block {
     background: #FFF;
     border-radius: 30px;
-    padding: 60px;
-    margin-bottom: 60px;
+    padding: 40px;
+    margin-bottom: 40px;
     position: relative;
     box-shadow: 0 20px 60px rgba(255, 0, 0, 0.2);
     overflow: hidden;
@@ -563,19 +642,21 @@ body {
 
 .feature-number {
     position: absolute;
-    top: 30px;
-    left: 30px;
-    font-size: 4rem;
+    top: 20px;
+    left: 20px;
+    font-size: 3rem;
     font-weight: 900;
-    color: rgba(255, 0, 0, 0.1);
+    color: rgba(255, 0, 0, 0.08);
     font-style: italic;
+    z-index: 0;
 }
 
 .feature-main-title {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: #333;
-    margin-bottom: 30px;
-    line-height: 1.4;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    line-height: 1.3;
 }
 
 .highlight-text {
@@ -619,6 +700,8 @@ body {
 
 .feature-content {
     flex: 1;
+    position: relative;
+    z-index: 1;
 }
 
 .feature-benefits {
@@ -669,8 +752,8 @@ body {
     background: #FFF;
     border: 3px solid #FFD700;
     border-radius: 20px;
-    padding: 40px;
-    margin: -30px 60px 60px;
+    padding: 30px;
+    margin: -20px 60px 40px;
     box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
 }
 
@@ -858,11 +941,12 @@ body {
 
 @media (max-width: 768px) {
     .features-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        white-space: normal;
     }
     
     .feature-block {
-        padding: 30px 20px;
+        padding: 25px 15px;
     }
     
     .feature-gia {
@@ -870,7 +954,27 @@ body {
     }
     
     .feature-main-title {
-        font-size: 1.8rem;
+        font-size: clamp(1.2rem, 4vw, 1.5rem);
+        line-height: 1.2;
+        margin-top: 30px;
+    }
+    
+    .feature-number {
+        font-size: 2rem;
+        top: 10px;
+        left: 10px;
+    }
+    
+    .feature-main-title .highlight-text {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+    
+    .feature-main-title .big-text {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+    
+    .feature-main-title .huge-text {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
     }
     
     .highlight-text,
@@ -887,7 +991,7 @@ body {
     }
     
     .gia-explanation {
-        margin: 20px;
+        margin: 15px;
         padding: 20px;
     }
     
@@ -926,29 +1030,6 @@ body {
     animation: rotate 10s linear infinite;
 }
 
-.campaign-badge {
-    position: absolute;
-    top: -10px;
-    right: 30px;
-    display: flex;
-    gap: 10px;
-}
-
-.badge-new, .badge-limited {
-    background: #FFF;
-    color: #FF0000;
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-weight: 900;
-    font-size: 1rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    animation: bounce 2s infinite;
-}
-
-.badge-new {
-    background: #00FF00;
-    color: #000;
-}
 
 .campaign-title {
     text-align: center;
@@ -1106,12 +1187,13 @@ body {
 
 @media (max-width: 768px) {
     .special-campaign {
-        padding: 25px 15px;
-        margin-top: 30px;
+        padding: 20px 10px;
+        margin-top: 20px;
     }
     
     .campaign-title {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+        margin-bottom: 20px;
     }
     
     .mega-text {
@@ -1150,20 +1232,21 @@ body {
 /* Reference Price Section */
 .reference-price {
     background: #FFF8DC;
-    padding: 60px 0;
+    padding: 40px 0;
 }
 
 .reference-price h2 {
     text-align: center;
     font-size: 2rem;
     color: #FF0000;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    white-space: nowrap;
 }
 
 .price-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 30px;
+    gap: 20px;
 }
 
 @media (max-width: 1200px) {
@@ -1179,17 +1262,14 @@ body {
 }
 
 @media (max-width: 600px) {
-    .price-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
+    /* この設定は768pxで既に適用されているので削除 */
 }
 
 .price-card {
     background: #FFF;
     border: 3px solid #FFD700;
     border-radius: 15px;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     transition: transform 0.3s;
     box-shadow: 5px 5px 15px rgba(255, 0, 0, 0.2);
@@ -1202,8 +1282,9 @@ body {
 
 .price-card h3 {
     color: #FF0000;
-    margin: 15px 0;
-    font-size: 1.3rem;
+    margin: 10px 0;
+    font-size: 1.1rem;
+    line-height: 1.2;
 }
 
 .price {
@@ -1222,15 +1303,16 @@ body {
 /* Purchase Method Section */
 .purchase-method {
     background: linear-gradient(135deg, #FFA500, #FFD700);
-    padding: 60px 0;
+    padding: 40px 0;
 }
 
 .purchase-method h2 {
     text-align: center;
     font-size: 2rem;
     color: #FFF;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.3);
+    white-space: nowrap;
 }
 
 .method-grid {
@@ -1243,7 +1325,7 @@ body {
     background: #FFF;
     border: 3px solid #FF0000;
     border-radius: 15px;
-    padding: 30px;
+    padding: 20px;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s;
@@ -1265,17 +1347,18 @@ body {
 /* Urgency Section */
 .urgency {
     background: radial-gradient(circle at center, #FF0000, #FFD700);
-    padding: 60px 0;
+    padding: 40px 0;
     text-align: center;
     position: relative;
 }
 
 .urgency h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: #FFF;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
     animation: pulse 2s infinite;
+    white-space: nowrap;
 }
 
 @keyframes pulse {
@@ -1301,10 +1384,10 @@ body {
     background: #FFF;
     border: 3px solid #FFD700;
     border-radius: 10px;
-    padding: 30px;
+    padding: 20px;
     max-width: 800px;
     margin: 0 auto;
-    height: 400px;
+    height: 350px;
     position: relative;
 }
 
@@ -1316,14 +1399,15 @@ body {
 /* Reviews Section */
 .reviews {
     background: #FFF8DC;
-    padding: 60px 0;
+    padding: 40px 0;
 }
 
 .reviews h2 {
     text-align: center;
     font-size: 2rem;
     color: #FF0000;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    white-space: nowrap;
 }
 
 .review-grid {
@@ -1336,7 +1420,7 @@ body {
     background: #FFF;
     border: 3px solid #FFD700;
     border-radius: 15px;
-    padding: 25px;
+    padding: 20px;
     box-shadow: 5px 5px 15px rgba(255, 0, 0, 0.2);
 }
 
@@ -1363,15 +1447,16 @@ body {
 /* Featured Gems Section */
 .featured-gems {
     background: linear-gradient(135deg, #FFD700, #FFA500);
-    padding: 60px 0;
+    padding: 40px 0;
 }
 
 .featured-gems h2 {
     text-align: center;
     font-size: 2rem;
     color: #FFF;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.3);
+    white-space: nowrap;
 }
 
 .gems-grid {
@@ -1401,7 +1486,7 @@ body {
 /* High Price Points Section */
 .high-price-points {
     background: linear-gradient(180deg, #FFD700 0%, #FFA500 50%, #FF6347 100%);
-    padding: 80px 0;
+    padding: 50px 0;
     position: relative;
     overflow: hidden;
 }
@@ -1429,15 +1514,16 @@ body {
 
 .high-price-points h2 {
     text-align: center;
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: #FFF;
-    margin-bottom: 50px;
+    margin-bottom: 35px;
     font-weight: 900;
     text-shadow: 
         3px 3px 0px #FF0000,
         6px 6px 10px rgba(0, 0, 0, 0.3);
     position: relative;
     animation: glow-text 2s ease-in-out infinite;
+    white-space: nowrap;
 }
 
 .points-list {
@@ -1498,7 +1584,7 @@ body {
     background: rgba(255, 255, 255, 0.95);
     border: 5px solid #FF0000;
     border-radius: 30px;
-    padding: 50px;
+    padding: 35px;
     max-width: 900px;
     margin: 0 auto;
     position: relative;
@@ -1580,15 +1666,16 @@ body {
 /* Reasons Chosen Section */
 .reasons-chosen {
     background: linear-gradient(135deg, #FFA500, #FFD700);
-    padding: 60px 0;
+    padding: 40px 0;
 }
 
 .reasons-chosen h2 {
     text-align: center;
     font-size: 2rem;
     color: #FFF;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.3);
+    white-space: nowrap;
 }
 
 .reasons-grid {
@@ -1601,7 +1688,7 @@ body {
     background: #FFF;
     border: 3px solid #FF0000;
     border-radius: 15px;
-    padding: 30px;
+    padding: 20px;
     text-align: center;
     transition: transform 0.3s;
 }
@@ -1627,14 +1714,15 @@ body {
 /* FAQ Section */
 .faq {
     background: #FFF8DC;
-    padding: 60px 0;
+    padding: 40px 0;
 }
 
 .faq h2 {
     text-align: center;
     font-size: 2rem;
     color: #FF0000;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    white-space: nowrap;
 }
 
 .faq-list {
@@ -1821,15 +1909,40 @@ body {
     }
 }
 
+/* 改行防止用 */
+.nowrap {
+    white-space: nowrap;
+}
+
+/* デスクトップでは1行表示を維持 */
+@media (min-width: 769px) {
+    .cta h2 {
+        white-space: nowrap;
+        font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+    
+    .urgency h2 {
+        white-space: nowrap;
+        font-size: clamp(2rem, 4vw, 2.5rem);
+    }
+    
+    .urgency-text {
+        white-space: nowrap;
+        font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
-        padding: 0 15px;
+        padding: 0 10px;
     }
     
     section {
-        padding: 40px 0;
+        padding: 25px 0;
     }
+    
+    /* 768px以下でも価格グリッドを調整 - 後で詳細設定するので基本設定のみ */
     
     .negative-heading {
         font-size: 1.8rem;
@@ -1837,8 +1950,59 @@ body {
     }
     
     .insight-title {
-        font-size: 2rem;
-        padding: 0 10px;
+        font-size: 1.8rem;
+        padding: 0 5px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: nowrap;
+        gap: 5px;
+        margin-bottom: 20px;
+    }
+    
+    /* モバイルでの文字サイズ自動調整 */
+    .insight-title {
+        font-size: clamp(1.3rem, 5vw, 1.8rem);
+        white-space: nowrap;
+    }
+    
+    .cta h2 {
+        font-size: clamp(1rem, 4.5vw, 1.5rem);
+        white-space: nowrap;
+        line-height: 1.2;
+    }
+    
+    .problem-title {
+        font-size: clamp(1rem, 4vw, 1.5rem);
+        padding: 12px 8px;
+    }
+    
+    .urgency h2 {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        white-space: nowrap;
+    }
+    
+    .urgency-text {
+        font-size: clamp(1rem, 4vw, 1.3rem);
+        white-space: nowrap;
+    }
+    
+    .reference-price h2,
+    .purchase-method h2,
+    .reviews h2,
+    .featured-gems h2,
+    .reasons-chosen h2,
+    .faq h2 {
+        font-size: clamp(1.3rem, 5vw, 1.8rem);
+        white-space: nowrap;
+    }
+    
+    .high-price-points h2 {
+        font-size: clamp(1.3rem, 5vw, 1.8rem);
+        white-space: nowrap;
+    }
+    
+    .nowrap {
+        white-space: nowrap;
     }
     
     .insight-title::before,
@@ -1847,39 +2011,142 @@ body {
     }
     
     .cta-buttons {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
         padding: 0 10px;
+        gap: 10px;
     }
     
     .cta-btn {
-        width: 90%;
-        max-width: 300px;
-        margin: 10px auto;
+        flex: 1;
+        max-width: none;
+        margin: 0;
+        padding: 15px 10px;
+        font-size: 1rem;
     }
     
-    .price-grid,
-    .method-grid,
-    .review-grid,
-    .gems-grid,
-    .reasons-grid,
-    .condition-grid {
+    .btn-icon {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+    
+    .cta-btn small {
+        font-size: 0.7rem;
+    }
+    
+    /* グリッドレイアウトをスマホでも維持 */
+    .price-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        padding: 0 10px;
+        gap: 10px !important;
+    }
+    
+    .method-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        padding: 0 10px;
+        gap: 15px;
+    }
+    
+    .review-grid {
         grid-template-columns: 1fr;
         padding: 0 10px;
     }
     
-    .price-card,
-    .method-card,
-    .review-card,
-    .gem-card,
-    .reason-card {
+    .gems-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        padding: 0 10px;
+        gap: 10px;
+    }
+    
+    .reasons-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        padding: 0 10px;
+        gap: 15px;
+    }
+    
+    .condition-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        padding: 0 10px;
+        gap: 10px;
+    }
+    
+    .price-card {
+        margin: 0;
+        width: 100%;
+        padding: 12px 8px;
+    }
+    
+    .price-card .image-placeholder {
+        height: 70px;
+        margin-bottom: 8px;
+    }
+    
+    .price-card h3 {
+        font-size: 0.95rem;
+        margin: 8px 0 5px;
+        line-height: 1.2;
+    }
+    
+    .price-card .price {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    
+    .method-card {
+        margin: 0;
+        width: 100%;
+        padding: 15px 10px;
+    }
+    
+    .method-card h3 {
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+    
+    .review-card {
         margin: 0 auto;
         width: 95%;
     }
     
-    .urgency h2 {
+    .gem-card {
+        margin: 0;
+        width: 100%;
+        padding: 10px 5px;
+    }
+    
+    .gem-card h3 {
+        font-size: 0.9rem;
+        margin-top: 8px;
+    }
+    
+    .reason-card {
+        margin: 0;
+        width: 100%;
+        padding: 15px 10px;
+    }
+    
+    .reason-card h3 {
+        font-size: 1rem;
+    }
+    
+    .reason-icon {
         font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    .condition-item {
+        padding: 12px 8px;
+        font-size: 0.9rem;
+    }
+    
+    .condition-item small {
+        font-size: 0.8rem;
+    }
+    
+    .urgency h2 {
+        font-size: 1.8rem;
         padding: 0 10px;
+        white-space: normal;
     }
     
     .faq-list {
@@ -1888,15 +2155,135 @@ body {
     
     .image-placeholder {
         margin: 0 auto;
-        width: 95%;
+        width: 100%;
+        height: auto;
+    }
+    
+    .method-card .image-placeholder {
+        height: 60px;
+        margin-bottom: 5px;
+    }
+    
+    .gem-card .image-placeholder {
+        height: 60px;
+        margin-bottom: 5px;
     }
     
     h2 {
         text-align: center;
-        padding: 0 10px;
+        padding: 0 5px;
+        font-size: clamp(1.2rem, 4.5vw, 1.6rem);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     
     p {
         padding: 0 10px;
+    }
+    
+    /* Mobile specific text adjustments */
+    .chart-placeholder {
+        height: 300px;
+        padding: 15px;
+    }
+    
+    .worry-compact-item {
+        padding: 10px;
+    }
+    
+    .worry-text {
+        font-size: 0.9rem;
+        line-height: 1.2;
+    }
+    
+    .problem-title br {
+        display: none;
+    }
+    
+    .problem-title {
+        white-space: normal;
+        line-height: 1.3;
+    }
+    
+    .solution-content p {
+        font-size: 1.1rem;
+        line-height: 1.4;
+    }
+    
+    .big-result {
+        font-size: 1.3rem;
+        line-height: 1.3;
+    }
+    
+    .feature-benefits .benefit-item {
+        padding: 10px 15px;
+        margin-bottom: 10px;
+        font-size: 1rem;
+    }
+    
+    .gia-special-note {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+    }
+    
+    .note-item {
+        padding: 15px;
+    }
+    
+    .note-item p {
+        font-size: 0.9rem;
+        line-height: 1.3;
+    }
+    
+    .note-item strong {
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
+    
+    .note-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    .campaign-detail {
+        padding: 20px;
+    }
+    
+    .condition-section {
+        padding: 25px 15px;
+    }
+    
+    .condition-section h3 {
+        font-size: 1.5rem;
+    }
+    
+    .points-list {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+    }
+    
+    .point-item {
+        padding: 15px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .point-item p {
+        font-size: 1rem;
+        line-height: 1.2;
+    }
+    
+    .point-number {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+        margin-right: 15px;
+        flex-shrink: 0;
+    }
+    
+    .high-price-points h2 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
     }
 }
