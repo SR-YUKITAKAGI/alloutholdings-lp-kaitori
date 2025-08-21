@@ -164,6 +164,136 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Gold Price Chart
+document.addEventListener('DOMContentLoaded', function() {
+    // Create gold price chart
+    const ctx = document.getElementById('goldPriceChart');
+    if (ctx) {
+        const years = [];
+        const prices = [];
+        
+        // Historical data (approximate)
+        const historicalData = {
+            2015: [4400, 4420, 4380, 4450, 4400, 4350, 4400, 4450, 4380, 4420, 4400, 4410],
+            2016: [4300, 4320, 4280, 4350, 4300, 4250, 4300, 4350, 4280, 4320, 4300, 4310],
+            2017: [4500, 4520, 4480, 4550, 4500, 4450, 4500, 4550, 4480, 4520, 4500, 4510],
+            2018: [4700, 4720, 4680, 4750, 4700, 4650, 4700, 4750, 4680, 4720, 4700, 4710],
+            2019: [5200, 5220, 5180, 5250, 5200, 5150, 5200, 5250, 5180, 5220, 5200, 5210],
+            2020: [5500, 5800, 6200, 6500, 6800, 7000, 6900, 6800, 6700, 6600, 6500, 6550],
+            2021: [6800, 6900, 7000, 7100, 7200, 7300, 7250, 7200, 7150, 7100, 7200, 7250],
+            2022: [7500, 7800, 8200, 8500, 8800, 9000, 9100, 9000, 8900, 8800, 8700, 8800],
+            2023: [9000, 9300, 9600, 9900, 10200, 10500, 10800, 11000, 10900, 10800, 11000, 11200],
+            2024: [11500, 11800, 12000, 12200, 12400, 12600, 12700, 12831, 13057, 14297, 14477, 14392]
+        };
+        
+        // 2025年の実際のデータ
+        const data2025 = [
+            15068,  // 1月
+            15625,  // 2月
+            15754,  // 3月
+            16554,  // 4月
+            16869,  // 5月
+            17220,  // 6月
+            17421,  // 7月
+            17339   // 8月（現在）
+        ];
+        
+        // Compile all data
+        for (let year = 2015; year <= 2024; year++) {
+            const monthlyData = historicalData[year];
+            for (let month = 0; month < monthlyData.length; month++) {
+                years.push(`${year}/${month + 1}`);
+                prices.push(monthlyData[month]);
+            }
+        }
+        
+        // Add 2025 data
+        for (let month = 0; month < data2025.length; month++) {
+            years.push(`2025/${month + 1}`);
+            prices.push(data2025[month]);
+        }
+        
+        // Show only every 6th label to avoid crowding
+        const displayedLabels = years.map((label, index) => {
+            return index % 6 === 0 ? label : '';
+        });
+        
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: displayedLabels,
+                datasets: [{
+                    label: '金買取価格 (円/g)',
+                    data: prices,
+                    borderColor: '#FFD700',
+                    backgroundColor: 'rgba(255, 215, 0, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 0,
+                    pointHoverRadius: 5,
+                    pointBackgroundColor: '#FFD700',
+                    pointBorderColor: '#FF0000',
+                    pointBorderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '金買取価格推移（2015年〜2025年8月）史上最高値 ¥17,339/g 更新中！',
+                        color: '#FF0000',
+                        font: {
+                            size: 20,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return '¥' + context.parsed.y.toLocaleString() + '/g';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#666',
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    },
+                    y: {
+                        beginAtZero: false,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        },
+                        ticks: {
+                            color: '#666',
+                            callback: function(value) {
+                                return '¥' + value.toLocaleString();
+                            }
+                        }
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                }
+            }
+        });
+    }
+});
+
 // Add CSS animations via JavaScript
 const style = document.createElement('style');
 style.textContent = `

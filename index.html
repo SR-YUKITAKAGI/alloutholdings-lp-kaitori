@@ -9,11 +9,8 @@
 <body>
     <!-- First View Section -->
     <section id="firstview" class="firstview">
-        <div class="container">
-            <h1 class="negative-heading">宝石・ジュエリー安く売って<br>損していませんか？</h1>
-            <div class="image-placeholder">
-                <img src="placeholder.jpg" alt="宝石・ジュエリー買取イメージ">
-            </div>
+        <div class="firstview-image-placeholder">
+            <img src="placeholder.jpg" alt="宝石・ジュエリー安く売って損していませんか？">
         </div>
     </section>
 
@@ -73,6 +70,52 @@
                     LINEで無料相談<br>
                     <small>19:30以降翌日対応</small>
                 </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Color Stone Problem Section -->
+    <section id="color-stone-problem" class="color-stone-problem">
+        <div class="container">
+            <div class="problem-header">
+                <h2 class="problem-title">
+                    「色石(宝石)には価値がつかない。<br>
+                    買取は金属部分の価格だけになる。」<br>
+                    <span class="emphasis">そう言われませんでしたか？</span>
+                </h2>
+            </div>
+            
+            <div class="problem-content">
+                <div class="reason-box">
+                    <h3 class="reason-title">その理由は</h3>
+                    <p class="reason-text">
+                        「宝石に価値をつけるのは<br>
+                        <span class="highlight">専門的な知識が必要</span>」<br>
+                        だからです。
+                    </p>
+                </div>
+                
+                <div class="current-situation">
+                    <p>なので買い取りの世界では<br>
+                    <strong>色石はただ同然の価格</strong>で<br>
+                    値付けがされています。</p>
+                </div>
+                
+                <div class="solution-box">
+                    <h3 class="solution-title">しかし！</h3>
+                    <div class="solution-content">
+                        <p>弊社では<span class="gia-highlight">GIA</span>という<br>
+                        世界的にも影響力のある資格を有したスタッフが常駐し<br>
+                        <strong>適切な価格をご提案</strong></p>
+                        
+                        <div class="result-box">
+                            <p class="result-text">
+                                結果的に<br>
+                                <span class="big-result">他社よりも買い取り価格が<br>上昇する傾向にあります！</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -146,30 +189,8 @@
             <!-- Feature 2: 100% Price -->
             <div class="feature-block feature-price">
                 <div class="feature-number">02</div>
-                <div class="feature-content">
-                    <h3 class="feature-main-title">
-                        地金代は<br>
-                        <span class="huge-text">相場の100％</span>査定
-                    </h3>
-                    <div class="comparison-box">
-                        <div class="comparison-item other-shop">
-                            <h5>他店の場合</h5>
-                            <p>地金相場の<span class="percent-bad">70-80%</span></p>
-                            <p class="small-text">宝石の価値が分からず地金で利益確保</p>
-                        </div>
-                        <div class="vs-mark">VS</div>
-                        <div class="comparison-item our-shop">
-                            <h5>当店の場合</h5>
-                            <p>地金相場の<span class="percent-good">100%</span></p>
-                            <p class="small-text">宝石も地金も両方適正価格</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="price-guarantee">
-                    <span class="guarantee-text">最高価格保証</span>
-                </div>
                 
-                <!-- Special Campaign Banner -->
+                <!-- Special Campaign Banner (moved to top) -->
                 <div class="special-campaign">
                     <div class="campaign-badge">
                         <span class="badge-new">NEW!</span>
@@ -216,6 +237,29 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="feature-content">
+                    <h3 class="feature-main-title">
+                        地金代は<br>
+                        <span class="huge-text">相場の100％</span>査定
+                    </h3>
+                    <div class="comparison-box">
+                        <div class="comparison-item other-shop">
+                            <h5>他店の場合</h5>
+                            <p>地金相場の<span class="percent-bad">70-80%</span></p>
+                            <p class="small-text">宝石の価値が分からず地金で利益確保</p>
+                        </div>
+                        <div class="vs-mark">VS</div>
+                        <div class="comparison-item our-shop">
+                            <h5>当店の場合</h5>
+                            <p>地金相場の<span class="percent-good">100%</span></p>
+                            <p class="small-text">宝石も地金も両方適正価格</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-guarantee">
+                    <span class="guarantee-text">最高価格保証</span>
+                </div>
             </div>
         </div>
     </section>
@@ -226,7 +270,7 @@
             <h2>金相場高騰中！</h2>
             <p class="urgency-text">相場が落ちる前が売り時！</p>
             <div class="chart-placeholder">
-                <img src="placeholder.jpg" alt="金価格推移グラフ">
+                <canvas id="goldPriceChart"></canvas>
             </div>
         </div>
     </section>
@@ -566,6 +610,8 @@
         </button>
     </div>
 
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
