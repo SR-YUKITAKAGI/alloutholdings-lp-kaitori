@@ -294,6 +294,102 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Modal functions - グローバルスコープに配置
+window.showModal = function(contentType) {
+    const modal = document.getElementById('infoModal');
+    const modalBody = document.getElementById('modal-body');
+
+    let content = '';
+
+    switch(contentType) {
+        case 'company':
+            content = `
+                <h2>会社情報</h2>
+                <h3>株式会社オールアウト・ホールディングス</h3>
+
+                <p><strong>東京本社</strong><br>
+                〒154-0024<br>
+                東京都世田谷区三軒茶屋2－10－9　エスタシオ1号室</p>
+
+                <p><strong>TEL:</strong> 〇〇〇</p>
+
+                <p><strong>運営責任者:</strong> 福田　将大</p>
+
+                <p><strong>適格請求書発行事業者登録番号:</strong><br>
+                T9010901051074</p>
+            `;
+            break;
+
+        case 'legal':
+            content = `
+                <h2>古物営業法の規定に基づく表示</h2>
+
+                <h3>古物営業法許可番号</h3>
+                <p style="font-size: 1.5rem; font-weight: bold;">第303252417678号</p>
+            `;
+            break;
+
+        case 'privacy':
+            content = `
+                <h2>プライバシーポリシー</h2>
+
+                <h3>個人情報の取り扱いについて</h3>
+                <p>ALL OUT HOLDINGS株式会社（以下、当社）は、お客様の個人情報を以下の通り適切に取り扱います。</p>
+
+                <h3>1. 個人情報の収集</h3>
+                <p>当社は、以下の目的で個人情報を収集します：</p>
+                <ul>
+                    <li>買取査定サービスの提供</li>
+                    <li>お客様からのお問い合わせへの対応</li>
+                    <li>サービス向上のための分析</li>
+                    <li>法令に基づく対応</li>
+                </ul>
+
+                <h3>2. 個人情報の利用目的</h3>
+                <p>収集した個人情報は、以下の目的でのみ利用します：</p>
+                <ul>
+                    <li>買取サービスの提供・運営</li>
+                    <li>お客様へのご連絡・ご案内</li>
+                    <li>本人確認</li>
+                    <li>サービス改善のための統計データ作成</li>
+                </ul>
+
+                <h3>3. 個人情報の第三者提供</h3>
+                <p>当社は、以下の場合を除き、個人情報を第三者に提供しません：</p>
+                <ul>
+                    <li>お客様の同意がある場合</li>
+                    <li>法令に基づく場合</li>
+                    <li>人の生命・身体・財産の保護に必要な場合</li>
+                </ul>
+
+                <h3>4. 個人情報の安全管理</h3>
+                <p>当社は、個人情報の漏洩・紛失・改ざん等を防止するため、適切な安全管理措置を講じます。</p>
+
+                <h3>5. お問い合わせ窓口</h3>
+                <p>個人情報に関するお問い合わせは以下までご連絡ください：<br>
+                電話: 0120-XXX-XXX<br>
+                メール: privacy@alloutholdings.co.jp</p>
+            `;
+            break;
+    }
+
+    modalBody.innerHTML = content;
+    modal.style.display = 'block';
+}
+
+window.closeModal = function() {
+    const modal = document.getElementById('infoModal');
+    modal.style.display = 'none';
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('infoModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+
 // Add CSS animations via JavaScript
 const style = document.createElement('style');
 style.textContent = `
